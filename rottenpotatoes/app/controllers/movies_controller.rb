@@ -62,6 +62,7 @@ class MoviesController < ApplicationController
   end
 
   def find_similar
-  
+
   end  
+  
 end
