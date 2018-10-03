@@ -3,7 +3,4 @@ class Movie < ActiveRecord::Base
     %w(G PG PG-13 NC-17 R)
   end
   
-  def self.similar_movies(id)
- 
-  end  
 end

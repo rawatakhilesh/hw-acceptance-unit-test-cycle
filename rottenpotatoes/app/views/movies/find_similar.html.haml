@@ -2,5 +2,9 @@
 
 %h2 Similar Movies
 
-
+%tbody
+    - @similar_movies.each do |movie|
+        %br
+        = link_to "#{movie.title}", movie_path(movie)
+%br
 = link_to 'Back to movie list', movies_path
