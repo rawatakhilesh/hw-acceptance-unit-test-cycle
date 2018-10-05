@@ -36,7 +36,7 @@ RSpec.describe MoviesController, type: :controller do
             end
         
             it "should flash no director info notice" do
-                flash[:notice].should =~ /Wasseypur has no director info./ 
+                flash[:notice].should =~ /\'Wasseypur\' has no director info./ 
             end    
         end
    end
