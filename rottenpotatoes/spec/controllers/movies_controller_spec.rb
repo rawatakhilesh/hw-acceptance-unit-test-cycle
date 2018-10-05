@@ -8,15 +8,15 @@ RSpec.describe MoviesController, type: :controller do
     end
     
     describe "#find_similar" do
-        it "should call model method to find similar movies" do
+        it "should call model to find similar movies" do
             Movie.should_receive(:find).with("20").and_return(@test_movie)
-            Movie.should_receive(:similar_movies).with("20").and_return(@test_results)
+            Movie.should_receive(:where).with({:director=>"Anurag Kashyap"}).and_return(@test_results)
             post :find_similar, {:movie_id => "20"}      
         end       
     
         before do
             Movie.stub(:find).with("20").and_return(@test_movie)
-            Movie.stub(:similar_movies).with("20").and_return(@test_results)
+            Movie.stub(:where).with({:director=>"Anurag Kashyap"}).and_return(@test_results)
             post :find_similar, {:movie_id => "20"}
             
         end
@@ -28,7 +28,7 @@ RSpec.describe MoviesController, type: :controller do
         describe 'sad path' do
             before do
                 Movie.stub(:find).with("20").and_return(@test_movie)
-                Movie.stub(:similar_movies).with("20").and_return(nil)
+                Movie.stub(:where).with({:director=>"Anurag Kashyap"}).and_return(nil)
                 post :find_similar, {:movie_id => "20"}
             end
             it "should redirect to home page and flash" do
